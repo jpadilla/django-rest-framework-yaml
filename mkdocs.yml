@@ -1,0 +1,4 @@
+site_name: djangorestframework-yaml
+site_description: YAML support for Django REST Framework
+repo_url: https://github.com/jpadilla/django-rest-framework-yaml
+site_dir: html
