@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from decimal import Decimal
 
 from django.test import TestCase
-from rest_framework.compat import StringIO
+from rest_framework.compat import BytesIO
 from rest_framework_yaml.renderers import YAMLRenderer
 from rest_framework_yaml.parsers import YAMLParser
 
@@ -23,7 +23,7 @@ class YAMLRendererTests(TestCase):
         obj = {'foo': ['bar', 'baz']}
         renderer = YAMLRenderer()
         content = renderer.render(obj, 'application/yaml')
-        self.assertEqual(content, _yaml_repr)
+        self.assertEqual(content.decode('utf-8'), _yaml_repr)
 
     def test_render_and_parse(self):
         """
@@ -36,7 +36,7 @@ class YAMLRendererTests(TestCase):
         parser = YAMLParser()
 
         content = renderer.render(obj, 'application/yaml')
-        data = parser.parse(StringIO(content))
+        data = parser.parse(BytesIO(content))
         self.assertEqual(obj, data)
 
     def test_render_decimal(self):
@@ -45,7 +45,7 @@ class YAMLRendererTests(TestCase):
         """
         renderer = YAMLRenderer()
         content = renderer.render({'field': Decimal('111.2')}, 'application/yaml')
-        self.assertYAMLContains(content, "field: '111.2'")
+        self.assertYAMLContains(content.decode('utf-8'), "field: '111.2'")
 
     def assertYAMLContains(self, content, string):
         self.assertTrue(string in content, '%r not in %r' % (string, content))
