@@ -4,7 +4,7 @@ versions of django/python, and compatibility wrappers around optional packages.
 """
 # flake8: noqa
 
-# YAML is optional
+
 try:
     import yaml
 except ImportError:
