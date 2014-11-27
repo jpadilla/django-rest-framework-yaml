@@ -14,7 +14,9 @@ url = 'https://github.com/jpadilla/django-rest-framework-yaml'
 author = 'José Padilla'
 author_email = 'hello@jpadilla.com'
 license = 'BSD'
-install_requires = open('requirements.txt').read().split('\n')
+install_requires = [
+    'PyYAML>=3.10'
+]
 
 
 # This command has been borrowed from
