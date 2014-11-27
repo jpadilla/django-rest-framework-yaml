@@ -6,7 +6,7 @@ The default set of renderers may be set globally, using the `DEFAULT_RENDERER_CL
 
     REST_FRAMEWORK = {
         'DEFAULT_RENDERER_CLASSES': (
-            'rest_framework.renderers.YAMLRenderer',
+            'rest_framework_yaml.renderers.YAMLRenderer',
         )
     }
 
@@ -14,13 +14,13 @@ You can also set the renderers used for an individual view, or viewset,
 using the `APIView` class based views.
 
     from django.contrib.auth.models import User
-    from rest_framework.renderers import YAMLRenderer
     from rest_framework.response import Response
     from rest_framework.views import APIView
+    from rest_framework_yaml.renderers import YAMLRenderer
 
     class UserCountView(APIView):
         """
-        A view that returns the count of active users, in JSON or YAML.
+        A view that returns the count of active users in YAML.
         """
         renderer_classes = (YAMLRenderer,)
 
@@ -35,7 +35,7 @@ Or, if you're using the `@api_view` decorator with function based views.
     @renderer_classes((YAMLRenderer,))
     def user_count_view(request, format=None):
         """
-        A view that returns the count of active users, in JSON or JSONp.
+        A view that returns the count of active users in YAML.
         """
         user_count = User.objects.filter(active=True).count()
         content = {'user_count': user_count}
