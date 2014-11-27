@@ -1,6 +1,6 @@
 <div class="badges">
     <a href="http://travis-ci.org/jpadilla/django-rest-framework-yaml?branch=master">
-        <img src="https://travis-ci.org/jpadilla/django-rest-framework-yaml.svg?branch=masterr">
+        <img src="https://travis-ci.org/jpadilla/django-rest-framework-yaml.svg?branch=master">
     </a>
     <a href="https://pypi.python.org/pypi/djangorestframework-yaml">
         <img src="https://pypip.in/version/djangorestframework-yaml/badge.svg">
