@@ -3,6 +3,10 @@
 [![build-status-image]][travis]
 [![pypi-version]][pypi]
 
+**YAML support for Django REST Framework**
+
+Full documentation for the project is available at [http://jpadilla.github.io/django-rest-framework-yaml][docs].
+
 ## Overview
 
 YAML support extracted as a third party package directly from the official Django REST Framework implementation. It's built using the [PyYAML][pyyaml] package.
@@ -54,7 +58,7 @@ class ExampleView(APIView):
 
 ## Documentation & Support
 
-Full documentation for the project is available at http://jpadilla.github.io/django-rest-framework-yaml/.
+Full documentation for the project is available at [http://jpadilla.github.io/django-rest-framework-yaml][docs].
 
 You may also want to follow the [author][jpadilla] on Twitter.
 
@@ -64,4 +68,5 @@ You may also want to follow the [author][jpadilla] on Twitter.
 [pypi-version]: https://pypip.in/version/djangorestframework-yaml/badge.svg
 [pypi]: https://pypi.python.org/pypi/djangorestframework-yaml
 [pyyaml]: http://pyyaml.org/
+[docs]: http://jpadilla.github.io/django-rest-framework-yaml
 [jpadilla]: https://twitter.com/jpadilla_
