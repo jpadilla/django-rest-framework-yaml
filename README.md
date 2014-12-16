@@ -40,20 +40,23 @@ REST_FRAMEWORK = {
 You can also set the renderer and parser used for an individual view, or viewset, using the APIView class based views.
 
 ```python
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import routers, serializers, viewsets
 from rest_framework_yaml.parsers import YAMLParser
 from rest_framework_yaml.renderers import YAMLRenderer
 
-class ExampleView(APIView):
-    """
-    A view that can accept POST requests with YAML content.
-    """
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     parser_classes = (YAMLParser,)
     renderer_classes = (YAMLRenderer,)
-
-    def post(self, request, format=None):
-        return Response({'received data': request.DATA})
 ```
 
 ## Documentation & Support
