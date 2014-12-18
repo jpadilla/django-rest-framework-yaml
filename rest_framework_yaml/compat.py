@@ -18,3 +18,10 @@ try:
     from collections import OrderedDict
 except:
     from django.utils.datastructures import SortedDict as OrderedDict
+
+try:
+    # Note: ReturnDict and ReturnList are private API from DRF 3
+    from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
+except ImportError:
+    ReturnDict = None
+    ReturnList = None

@@ -7,10 +7,7 @@ import types
 
 from django.utils import six
 
-# Note: ReturnDict and ReturnList are private API
-from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
-
-from .compat import yaml, OrderedDict
+from .compat import yaml, OrderedDict, ReturnDict, ReturnList
 
 
 class SafeDumper(yaml.SafeDumper):
@@ -60,16 +57,18 @@ SafeDumper.add_representer(
 )
 
 SafeDumper.add_representer(
-    ReturnDict,
-    yaml.representer.SafeRepresenter.represent_dict
-)
-
-SafeDumper.add_representer(
-    ReturnList,
-    yaml.representer.SafeRepresenter.represent_list
-)
-
-SafeDumper.add_representer(
     types.GeneratorType,
     yaml.representer.SafeRepresenter.represent_list
 )
+
+if ReturnDict:
+    SafeDumper.add_representer(
+        ReturnDict,
+        yaml.representer.SafeRepresenter.represent_dict
+    )
+
+if ReturnList:
+    SafeDumper.add_representer(
+        ReturnList,
+        yaml.representer.SafeRepresenter.represent_list
+    )
