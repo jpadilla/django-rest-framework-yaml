@@ -7,15 +7,19 @@ import types
 
 from django.utils import six
 
+# Note: ReturnDict and ReturnList are private API
+from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
+
 from .compat import yaml, OrderedDict
 
 
-# Adapted from http://pyyaml.org/attachment/ticket/161/use_ordered_dict.py
 class SafeDumper(yaml.SafeDumper):
     """
     Handles decimals as strings.
     Handles OrderedDicts as usual dicts, but preserves field order, rather
     than the usual behaviour of sorting the keys.
+
+    Adapted from http://pyyaml.org/attachment/ticket/161/use_ordered_dict.py
     """
     def represent_decimal(self, data):
         return self.represent_scalar('tag:yaml.org,2002:str', six.text_type(data))
@@ -53,6 +57,16 @@ SafeDumper.add_representer(
 SafeDumper.add_representer(
     OrderedDict,
     yaml.representer.SafeRepresenter.represent_dict
+)
+
+SafeDumper.add_representer(
+    ReturnDict,
+    yaml.representer.SafeRepresenter.represent_dict
+)
+
+SafeDumper.add_representer(
+    ReturnList,
+    yaml.representer.SafeRepresenter.represent_list
 )
 
 SafeDumper.add_representer(
