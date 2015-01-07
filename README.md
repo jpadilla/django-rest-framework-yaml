@@ -59,6 +59,17 @@ class UserViewSet(viewsets.ModelViewSet):
     renderer_classes = (YAMLRenderer,)
 ```
 
+### Sample output
+
+```yaml
+---
+-
+  email: jpadilla@example.com
+  is_staff: true
+  url: "http://127.0.0.1:8000/users/1/"
+  username: jpadilla
+```
+
 ## Documentation & Support
 
 Full documentation for the project is available at [http://jpadilla.github.io/django-rest-framework-yaml][docs].

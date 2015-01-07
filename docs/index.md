@@ -64,6 +64,17 @@ class ExampleView(APIView):
         return Response({'received data': request.DATA})
 ```
 
+### Sample output
+
+```yaml
+---
+-
+  email: jpadilla@example.com
+  is_staff: true
+  url: "http://127.0.0.1:8000/users/1/"
+  username: jpadilla
+```
+
 ## Testing
 
 Install testing requirements.
