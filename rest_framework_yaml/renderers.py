@@ -19,6 +19,7 @@ class YAMLRenderer(BaseRenderer):
     encoder = SafeDumper
     charset = 'utf-8'
     ensure_ascii = False
+    default_flow_style = False
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
         """
@@ -34,5 +35,6 @@ class YAMLRenderer(BaseRenderer):
             stream=None,
             encoding=self.charset,
             Dumper=self.encoder,
-            allow_unicode=not self.ensure_ascii
+            allow_unicode=not self.ensure_ascii,
+            default_flow_style=self.default_flow_style
         )

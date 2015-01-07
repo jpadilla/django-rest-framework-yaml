@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from io import BytesIO
 from decimal import Decimal
 
 from django.test import TestCase
-from rest_framework.compat import BytesIO
 from rest_framework_yaml.renderers import YAMLRenderer
 from rest_framework_yaml.parsers import YAMLParser
-
-
-_yaml_repr = 'foo: [bar, baz]\n'
 
 
 class YAMLRendererTests(TestCase):
@@ -20,9 +17,13 @@ class YAMLRendererTests(TestCase):
         """
         Test basic YAML rendering.
         """
+        _yaml_repr = 'foo:\n- bar\n- baz\n'
+
         obj = {'foo': ['bar', 'baz']}
+
         renderer = YAMLRenderer()
         content = renderer.render(obj, 'application/yaml')
+
         self.assertEqual(content.decode('utf-8'), _yaml_repr)
 
     def test_render_and_parse(self):
