@@ -177,6 +177,15 @@ class ExampleView(APIView):
         return Response({'received data': request.DATA})
 </code></pre>
 
+<h3 id="sample-output">Sample output</h3>
+<pre><code class="yaml">---
+-
+  email: jpadilla@example.com
+  is_staff: true
+  url: &quot;http://127.0.0.1:8000/users/1/&quot;
+  username: jpadilla
+</code></pre>
+
 <h2 id="testing">Testing</h2>
 <p>Install testing requirements.</p>
 <pre><code class="bash">$ pip install -r requirements.txt
