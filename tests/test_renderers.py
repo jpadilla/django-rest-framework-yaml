@@ -52,7 +52,8 @@ class YAMLRendererTests(TestCase):
         self.assertTrue(string in content, '%r not in %r' % (string, content))
 
     def test_proper_encoding(self):
+        _yaml_repr = 'countries:\n- United Kingdom\n- France\n- España'
         obj = {'countries': ['United Kingdom', 'France', 'España']}
         renderer = YAMLRenderer()
         content = renderer.render(obj, 'application/yaml')
-        self.assertEqual(content.strip(), 'countries: [United Kingdom, France, España]'.encode('utf-8'))
+        self.assertEqual(content.strip(), _yaml_repr.encode('utf-8'))
