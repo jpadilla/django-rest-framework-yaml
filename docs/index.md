@@ -3,7 +3,7 @@
         <img src="https://travis-ci.org/jpadilla/django-rest-framework-yaml.svg?branch=master">
     </a>
     <a href="https://pypi.python.org/pypi/djangorestframework-yaml">
-        <img src="https://pypip.in/version/djangorestframework-yaml/badge.svg">
+        <img src="https://img.shields.io/pypi/v/djangorestframework-yaml.svg">
     </a>
 </div>
 
