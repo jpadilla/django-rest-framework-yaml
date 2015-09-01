@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+import unittest
 from io import BytesIO
 from decimal import Decimal
 
 from django.test import TestCase
+from rest_framework_yaml.compat import Hyperlink
 from rest_framework_yaml.renderers import YAMLRenderer
 from rest_framework_yaml.parsers import YAMLParser
 
@@ -47,6 +50,15 @@ class YAMLRendererTests(TestCase):
         renderer = YAMLRenderer()
         content = renderer.render({'field': Decimal('111.2')}, 'application/yaml')
         self.assertYAMLContains(content.decode('utf-8'), "field: '111.2'")
+
+    @unittest.skipUnless(Hyperlink, 'Hyperlink is undefined')
+    def test_render_hyperlink(self):
+        """
+        Test YAML Hyperlink rendering.
+        """
+        renderer = YAMLRenderer()
+        content = renderer.render({'field': Hyperlink('http://pépé.com?great-answer=42', 'test')}, 'application/yaml')
+        self.assertYAMLContains(content.decode('utf-8'), "field: http://pépé.com?great-answer=42")
 
     def assertYAMLContains(self, content, string):
         self.assertTrue(string in content, '%r not in %r' % (string, content))
