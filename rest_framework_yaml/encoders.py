@@ -7,7 +7,9 @@ import types
 
 from django.utils import six
 
-from .compat import yaml, OrderedDict, ReturnDict, ReturnList
+from .compat import (
+    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
+)
 
 
 class SafeDumper(yaml.SafeDumper):
@@ -60,6 +62,12 @@ SafeDumper.add_representer(
     types.GeneratorType,
     yaml.representer.SafeRepresenter.represent_list
 )
+
+if Hyperlink:
+    SafeDumper.add_representer(
+        Hyperlink,
+        yaml_represent_text
+    )
 
 if ReturnDict:
     SafeDumper.add_representer(
