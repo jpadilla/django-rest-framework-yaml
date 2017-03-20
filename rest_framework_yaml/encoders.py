@@ -2,10 +2,12 @@
 Helper classes for parsers.
 """
 from __future__ import unicode_literals
+
 import decimal
 import types
 
 from django.utils import six
+from rest_framework import exceptions
 
 from .compat import (
     yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
@@ -61,6 +63,11 @@ SafeDumper.add_representer(
 SafeDumper.add_representer(
     types.GeneratorType,
     yaml.representer.SafeRepresenter.represent_list
+)
+
+SafeDumper.add_representer(
+    exceptions.ErrorDetail,
+    yaml_represent_text
 )
 
 if Hyperlink:
