@@ -36,3 +36,9 @@ try:
 except ImportError:
     ReturnDict = None
     ReturnList = None
+
+try:
+    # Note: ErrorDetail was introduced in DRF 3.5.0
+    from rest_framework.exceptions import ErrorDetail
+except ImportError:
+    ErrorDetail = None

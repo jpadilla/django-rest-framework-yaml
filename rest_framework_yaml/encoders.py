@@ -7,10 +7,9 @@ import decimal
 import types
 
 from django.utils import six
-from rest_framework import exceptions
 
 from .compat import (
-    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
+    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList, ErrorDetail
 )
 
 
@@ -65,11 +64,6 @@ SafeDumper.add_representer(
     yaml.representer.SafeRepresenter.represent_list
 )
 
-SafeDumper.add_representer(
-    exceptions.ErrorDetail,
-    yaml_represent_text
-)
-
 if Hyperlink:
     SafeDumper.add_representer(
         Hyperlink,
@@ -86,4 +80,10 @@ if ReturnList:
     SafeDumper.add_representer(
         ReturnList,
         yaml.representer.SafeRepresenter.represent_list
+    )
+
+if ErrorDetail:
+    SafeDumper.add_representer(
+        ErrorDetail,
+        yaml_represent_text
     )
