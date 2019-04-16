@@ -2,13 +2,14 @@
 Helper classes for parsers.
 """
 from __future__ import unicode_literals
+
 import decimal
 import types
 
 from django.utils import six
 
 from .compat import (
-    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
+    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList, ErrorDetail
 )
 
 
@@ -79,4 +80,10 @@ if ReturnList:
     SafeDumper.add_representer(
         ReturnList,
         yaml.representer.SafeRepresenter.represent_list
+    )
+
+if ErrorDetail:
+    SafeDumper.add_representer(
+        ErrorDetail,
+        yaml_represent_text
     )
