@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import decimal
 import types
 
-from django.utils import six
+import six
 from uuid import UUID
 from .compat import (
     yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
