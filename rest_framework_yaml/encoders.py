@@ -6,7 +6,7 @@ import decimal
 import types
 
 from django.utils import six
-
+from uuid import UUID
 from .compat import (
     yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
 )
@@ -34,8 +34,12 @@ class SafeDumper(yaml.SafeDumper):
             if not isinstance(mapping, OrderedDict):
                 mapping.sort()
         for item_key, item_value in mapping:
+            if isinstance(item_value, UUID):
+                item_value = str(item_value)
+                
             node_key = self.represent_data(item_key)
             node_value = self.represent_data(item_value)
+          
             if not (isinstance(node_key, yaml.ScalarNode) and not node_key.style):
                 best_style = False
             if not (isinstance(node_value, yaml.ScalarNode) and not node_value.style):
