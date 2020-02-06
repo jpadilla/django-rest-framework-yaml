@@ -1,15 +1,11 @@
 """
 Helper classes for parsers.
 """
-from __future__ import unicode_literals
 import decimal
 import types
-
-from django.utils import six
-
-from .compat import (
-    yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
-)
+import yaml
+from collections import OrderedDict
+from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
 
 
 class SafeDumper(yaml.SafeDumper):
@@ -21,7 +17,7 @@ class SafeDumper(yaml.SafeDumper):
     Adapted from http://pyyaml.org/attachment/ticket/161/use_ordered_dict.py
     """
     def represent_decimal(self, data):
-        return self.represent_scalar('tag:yaml.org,2002:str', six.text_type(data))
+        return self.represent_scalar('tag:yaml.org,2002:str', str(data))
 
     def represent_mapping(self, tag, mapping, flow_style=None):
         value = []
@@ -66,7 +62,7 @@ SafeDumper.add_representer(
 if Hyperlink:
     SafeDumper.add_representer(
         Hyperlink,
-        yaml_represent_text
+        yaml.representer.SafeRepresenter.represent_str
     )
 
 if ReturnDict:

@@ -13,8 +13,8 @@ YAML support extracted as a third party package directly from the official Djang
 
 ## Requirements
 
-* Python (2.7, 3.3, 3.4)
-* Django (1.6, 1.7)
+* Python (3.5, 3.6, 3.7, 3.8)
+* Django (2.2, 3.0)
 
 ## Installation
 

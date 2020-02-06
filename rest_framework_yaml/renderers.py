@@ -1,11 +1,7 @@
 """
 Provides YAML rendering support.
 """
-from __future__ import unicode_literals
-
 from rest_framework.renderers import BaseRenderer
-
-from .compat import yaml
 from .encoders import SafeDumper
 
 

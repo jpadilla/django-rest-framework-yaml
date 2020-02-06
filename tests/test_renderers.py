@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import unittest
 from io import BytesIO
 from decimal import Decimal
 
 from django.test import TestCase
-from rest_framework_yaml.compat import Hyperlink
+from rest_framework.relations import Hyperlink
 from rest_framework_yaml.renderers import YAMLRenderer
 from rest_framework_yaml.parsers import YAMLParser
 
