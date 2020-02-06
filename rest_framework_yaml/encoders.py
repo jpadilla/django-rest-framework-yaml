@@ -8,6 +8,7 @@ from collections import OrderedDict
 from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
 from rest_framework.relations import Hyperlink
 
+
 class SafeDumper(yaml.SafeDumper):
     """
     Handles decimals as strings.
@@ -43,6 +44,7 @@ class SafeDumper(yaml.SafeDumper):
             else:
                 node.flow_style = best_style
         return node
+
 
 SafeDumper.add_representer(
     decimal.Decimal,

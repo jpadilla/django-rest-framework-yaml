@@ -1,6 +1,11 @@
 language: python
 
 sudo: false
+python:
+- "3.5"
+- "3.6"
+- "3.7"
+- "3.8"
 
 env:
     - TOX_ENV=py37-flake8
@@ -26,7 +31,6 @@ env:
     - TOX_ENV=py38-django2.2-drf3.9.4
     - TOX_ENV=py38-django2.2-drf3.10.3
     - TOX_ENV=py38-django2.2-drf3.11.0
-    - TOX_ENV=py38-django3.0-drf3.9.4
     - TOX_ENV=py38-django3.0-drf3.10.3
     - TOX_ENV=py38-django3.0-drf3.11.0
 
@@ -34,6 +38,7 @@ matrix:
   fast_finish: true
 
 install:
+  - pip install -r requirements.txt
   - pip install tox
 
 script:

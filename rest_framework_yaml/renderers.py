@@ -3,6 +3,7 @@ Provides YAML rendering support.
 """
 from rest_framework.renderers import BaseRenderer
 from .encoders import SafeDumper
+import yaml
 
 
 class YAMLRenderer(BaseRenderer):
