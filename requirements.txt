@@ -13,6 +13,3 @@ wheel==0.34.2
 
 # MkDocs for documentation previews/deploys
 mkdocs==1.0.4
-
-# For running tests
-tox==3.14.3
