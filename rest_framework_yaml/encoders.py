@@ -6,7 +6,7 @@ import types
 import yaml
 from collections import OrderedDict
 from rest_framework.utils.serializer_helpers import ReturnDict, ReturnList
-
+from rest_framework.relations import Hyperlink
 
 class SafeDumper(yaml.SafeDumper):
     """
