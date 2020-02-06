@@ -12,5 +12,4 @@ matrix:
 
 install: pip install tox-travis
 
-script:
-- tox -e $TOX_ENV
+script: tox
