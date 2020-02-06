@@ -7,24 +7,6 @@ python:
 - "3.7"
 - "3.8"
 
-env:
-- TOX_ENV=py37-flake8
-- TOX_ENV=py37-docs
-- TOX_ENV=py35-django2.2-drf3.10.3
-- TOX_ENV=py35-django2.2-drf3.11.0
-- TOX_ENV=py36-django2.2-drf3.10.3
-- TOX_ENV=py36-django2.2-drf3.11.0
-- TOX_ENV=py36-django3.0-drf3.10.3
-- TOX_ENV=py36-django3.0-drf3.11.0
-- TOX_ENV=py37-django2.2-drf3.10.3
-- TOX_ENV=py37-django2.2-drf3.11.0
-- TOX_ENV=py37-django3.0-drf3.10.3
-- TOX_ENV=py37-django3.0-drf3.11.0
-- TOX_ENV=py38-django2.2-drf3.10.3
-- TOX_ENV=py38-django2.2-drf3.11.0
-- TOX_ENV=py38-django3.0-drf3.10.3
-- TOX_ENV=py38-django3.0-drf3.11.0
-
 matrix:
   fast_finish: true
 
