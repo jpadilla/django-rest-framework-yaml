@@ -14,10 +14,10 @@ class YAMLRenderer(BaseRenderer):
     Renderer which serializes to YAML.
     """
 
-    media_type = 'application/yaml'
-    format = 'yaml'
+    media_type = "application/yaml"
+    format = "yaml"
     encoder = SafeDumper
-    charset = 'utf-8'
+    charset = "utf-8"
     ensure_ascii = False
     default_flow_style = False
 
@@ -25,10 +25,10 @@ class YAMLRenderer(BaseRenderer):
         """
         Renders `data` into serialized YAML.
         """
-        assert yaml, 'YAMLRenderer requires pyyaml to be installed'
+        assert yaml, "YAMLRenderer requires pyyaml to be installed"
 
         if data is None:
-            return ''
+            return ""
 
         return yaml.dump(
             data,
@@ -36,5 +36,5 @@ class YAMLRenderer(BaseRenderer):
             encoding=self.charset,
             Dumper=self.encoder,
             allow_unicode=not self.ensure_ascii,
-            default_flow_style=self.default_flow_style
+            default_flow_style=self.default_flow_style,
         )
