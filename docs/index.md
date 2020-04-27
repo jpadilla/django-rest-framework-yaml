@@ -1,10 +1,10 @@
 <div class="badges">
-    <a href="http://travis-ci.org/jpadilla/django-rest-framework-yaml?branch=master">
-        <img src="https://travis-ci.org/jpadilla/django-rest-framework-yaml.svg?branch=master">
-    </a>
-    <a href="https://pypi.python.org/pypi/djangorestframework-yaml">
-        <img src="https://img.shields.io/pypi/v/djangorestframework-yaml.svg">
-    </a>
+  <a href="https://github.com/jpadilla/django-rest-framework-yaml/actions?query=workflow%3ACI">
+    <img src="https://github.com/jpadilla/django-rest-framework-yaml/workflows/CI/badge.svg">
+  </a>
+  <a href="https://pypi.python.org/pypi/djangorestframework-yaml">
+    <img src="https://img.shields.io/pypi/v/djangorestframework-yaml.svg">
+  </a>
 </div>
 
 ---
