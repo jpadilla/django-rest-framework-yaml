@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import decimal
 import types
 
-from django.utils import six
+from django.utils.encoding import force_str
 
 from .compat import (
     yaml, yaml_represent_text, Hyperlink, OrderedDict, ReturnDict, ReturnList
@@ -20,8 +20,9 @@ class SafeDumper(yaml.SafeDumper):
 
     Adapted from http://pyyaml.org/attachment/ticket/161/use_ordered_dict.py
     """
+
     def represent_decimal(self, data):
-        return self.represent_scalar('tag:yaml.org,2002:str', six.text_type(data))
+        return self.represent_scalar('tag:yaml.org,2002:str', force_str(data))
 
     def represent_mapping(self, tag, mapping, flow_style=None):
         value = []
@@ -47,6 +48,7 @@ class SafeDumper(yaml.SafeDumper):
             else:
                 node.flow_style = best_style
         return node
+
 
 SafeDumper.add_representer(
     decimal.Decimal,

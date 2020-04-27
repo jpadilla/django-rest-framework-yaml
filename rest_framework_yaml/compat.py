@@ -4,16 +4,12 @@ versions of django/python, and compatibility wrappers around optional packages.
 """
 # flake8: noqa
 
-from django.utils import six
 try:
     import yaml
 except ImportError:
     yaml = represent_text = None
 else:
-    if six.PY3:
-        yaml_represent_text = yaml.representer.SafeRepresenter.represent_str
-    else:
-        yaml_represent_text = yaml.representer.SafeRepresenter.represent_unicode
+    yaml_represent_text = yaml.representer.SafeRepresenter.represent_str
 
 # OrderedDict only available in Python 2.7.
 # This will always be the case in Django 1.7 and above, as these versions
