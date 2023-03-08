@@ -55,6 +55,19 @@ class YAMLRendererTests(TestCase):
         )
         self.assertYAMLContains(content.decode("utf-8"), "field: '111.2'")
 
+    def test_render_none_type(self):
+        """
+        Test YAML rendering with None type
+        """
+        _yaml_repr = "foo:\n- bar\n- baz\nnull:\n- null\n"
+
+        obj = {"foo": ["bar", "baz"], None: [None]}
+
+        renderer = YAMLRenderer()
+        content = renderer.render(obj, "application/yaml")
+
+        self.assertEqual(content.decode("utf-8"), _yaml_repr)
+
     @unittest.skipUnless(Hyperlink, "Hyperlink is undefined")
     def test_render_hyperlink(self):
         """
